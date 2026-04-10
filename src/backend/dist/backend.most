@@ -1,0 +1,82 @@
+// Version: 1.0.0
+type AlertType__283419482 = {#cyclone; #earthquake; #flood; #storm};
+type Alert__368562394 = Alert__607610635;
+type Alert__607610635 =
+  {
+    affectedArea : Text;
+    affectedPopulation : Nat;
+    alertType : AlertType__283419482;
+    id : Nat;
+    issuedAt : Timestamp__301639476;
+    location : Text;
+    recommendedActions : [Text];
+    severity : Severity__68426386;
+    title : Text
+  };
+type ContactSubmission__288046300 =
+  {
+    email : Text;
+    id : Nat;
+    message : Text;
+    name : Text;
+    submittedAt : Timestamp__301639476
+  };
+type ContactSubmission__611189437 = ContactSubmission__288046300;
+type ForecastEntry__833501095 =
+  {condition : WeatherCondition__560745054; time : Text};
+type Nat__490723111 = Nat__920180692;
+type Nat__920180692 = Nat;
+type ResourceType__813426929 = {#fire; #hospital; #police; #shelter; #supply};
+type Resource__736884683 =
+  {
+    address : Text;
+    distanceKm : Float;
+    hoursOfOperation : Text;
+    id : Nat;
+    lat : Float;
+    lng : Float;
+    name : Text;
+    phone : Text;
+    resourceType : ResourceType__813426929
+  };
+type Resource__88092136 = Resource__736884683;
+type Severity__68426386 = {#danger; #safe; #warning};
+type Timestamp__301639476 = Int;
+type WeatherCondition__560745054 = {#cloudy; #rainy; #stormy; #sunny};
+type Weather__416855220 = Weather__527635891;
+type Weather__527635891 =
+  {
+    condition : WeatherCondition__560745054;
+    forecast : [ForecastEntry__833501095];
+    humidity : Nat;
+    location : Text;
+    temperature : Int;
+    windSpeed : Nat
+  };
+actor {
+  stable alerts :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Alert__368562394]];
+      var elementIndex : Nat__490723111
+    };
+  stable contacts :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?ContactSubmission__611189437]];
+      var elementIndex : Nat__490723111
+    };
+  stable var nextContactId : Nat;
+  stable resources :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Resource__88092136]];
+      var elementIndex : Nat__490723111
+    };
+  stable weatherRecords :
+    {
+      var blockIndex : Nat__490723111;
+      var blocks : [var [var ?Weather__416855220]];
+      var elementIndex : Nat__490723111
+    }
+};

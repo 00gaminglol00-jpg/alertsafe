@@ -1,0 +1,21 @@
+{
+  "overview": "An integrated disaster early warning and emergency resource platform that provides real-time disaster alerts, location-based emergency assistance, and safety guidance for citizens in disaster-prone areas.",
+  "features": [
+    "Real-time disaster alerts dashboard with color-coded severity (flood, storm, cyclone, earthquake)",
+    "Location-based emergency assistance with nearest shelters, hospitals, and relief centers",
+    "Emergency resources finder with filtering by type",
+    "SOS emergency contact button with helpline numbers",
+    "Safety tips and preparedness checklists for each disaster type",
+    "7-page responsive web app: Home, Alerts, Safe Places, Resources, Safety Tips, About, Contact"
+  ],
+  "category": "productivity",
+  "tags": [
+    "disaster-management",
+    "emergency",
+    "alerts",
+    "safety",
+    "geolocation",
+    "public-safety"
+  ],
+  "last_updated": "2026-04-10T07:41:25.520Z"
+}

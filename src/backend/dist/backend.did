@@ -1,0 +1,84 @@
+type WeatherCondition = 
+ variant {
+   cloudy;
+   rainy;
+   stormy;
+   sunny;
+ };
+type Weather = 
+ record {
+   condition: WeatherCondition;
+   forecast: vec ForecastEntry;
+   humidity: nat;
+   location: text;
+   temperature: int;
+   windSpeed: nat;
+ };
+type Timestamp = int;
+type Severity = 
+ variant {
+   danger;
+   safe;
+   warning;
+ };
+type ResourceType = 
+ variant {
+   fire;
+   hospital;
+   police;
+   shelter;
+   supply;
+ };
+type Resource = 
+ record {
+   address: text;
+   distanceKm: float64;
+   hoursOfOperation: text;
+   id: nat;
+   lat: float64;
+   lng: float64;
+   name: text;
+   phone: text;
+   resourceType: ResourceType;
+ };
+type ForecastEntry = 
+ record {
+   condition: WeatherCondition;
+   time: text;
+ };
+type ContactSubmission = 
+ record {
+   email: text;
+   id: nat;
+   message: text;
+   name: text;
+   submittedAt: Timestamp;
+ };
+type AlertType = 
+ variant {
+   cyclone;
+   earthquake;
+   flood;
+   storm;
+ };
+type Alert = 
+ record {
+   affectedArea: text;
+   affectedPopulation: nat;
+   alertType: AlertType;
+   id: nat;
+   issuedAt: Timestamp;
+   location: text;
+   recommendedActions: vec text;
+   severity: Severity;
+   title: text;
+ };
+service : {
+  getAlerts: () -> (vec Alert) query;
+  getAlertsByType: (alertType: text) -> (vec Alert) query;
+  getContacts: () -> (vec ContactSubmission) query;
+  getResources: () -> (vec Resource) query;
+  getResourcesByType: (resourceType: text) -> (vec Resource) query;
+  getWeather: () -> (opt Weather) query;
+  submitContact: (name: text, email: text, message: text) -> ();
+}
